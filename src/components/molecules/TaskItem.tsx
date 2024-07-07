@@ -58,10 +58,15 @@ const TaskItem: React.FC<TaskItemProps> = ({
         )}
         <Button
           onClick={isEditing ? handleEditSubmit : () => setIsEditing(true)}
+          data-testid="edit-button"
         >
           {isEditing ? <MdOutlineSave /> : <MdOutlineModeEdit />}
         </Button>
-        <Button onClick={handleDelete} type="danger">
+        <Button
+          onClick={handleDelete}
+          typeButton="danger"
+          data-testid="delete-button"
+        >
           <MdOutlineDeleteForever />
         </Button>
       </div>

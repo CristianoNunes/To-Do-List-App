@@ -2,22 +2,24 @@ import React from "react";
 
 type TypeButton = "primary" | "danger";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void;
   children: React.ReactNode;
-  type?: TypeButton;
+  typeButton?: TypeButton;
 }
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
   children,
-  type = "primary",
+  typeButton = "primary",
+  ...props
 }) => (
   <button
     className={`${
-      type === "danger" ? "bg-red-500" : "bg-blue-500"
+      typeButton === "danger" ? "bg-red-500" : "bg-blue-500"
     } text-white px-4 py-2 rounded`}
     onClick={onClick}
+    {...props}
   >
     {children}
   </button>
