@@ -3,6 +3,7 @@ import Input from "../components/atoms/Input";
 import Button from "../components/atoms/Button";
 import TaskList from "../components/organisms/TaskList";
 import { Task } from "../types/Task";
+import Header from "../components/atoms/Header";
 
 interface TaskTemplateProps {
   tasks: Task[];
@@ -24,6 +25,7 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({
   onEditTask,
 }) => (
   <div className="p-4">
+    <Header text="TO-DO LIST" />
     <div className="flex space-x-2 mb-4">
       <Input value={newTask} onChange={onNewTaskChange} />
       <Button onClick={onAddTask}>Add Task</Button>
