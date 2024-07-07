@@ -23,7 +23,7 @@ test("calls onToggle when checkbox is clicked", () => {
 test("calls onDelete when delete button is clicked", () => {
   const { getByTestId, getByText } = render(<TaskItem {...defaultProps} />);
   fireEvent.click(getByTestId("delete-button"));
-  fireEvent.click(getByText("Confirm")); // Simula a confirmação da exclusão no modal
+  fireEvent.click(getByText("Confirm"));
   expect(defaultProps.onDelete).toHaveBeenCalledTimes(1);
 });
 
