@@ -22,6 +22,10 @@ const TaskPage: React.FC = () => {
     );
   };
 
+  const deleteTask = (id: string) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
     <TaskTemplate
       tasks={tasks}
@@ -29,6 +33,7 @@ const TaskPage: React.FC = () => {
       onAddTask={addTask}
       onNewTaskChange={(e) => setNewTask(e.target.value)}
       onToggleTask={toggleTask}
+      onDeleteTask={deleteTask}
     />
   );
 };

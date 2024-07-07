@@ -10,6 +10,7 @@ interface TaskTemplateProps {
   onAddTask: () => void;
   onNewTaskChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onToggleTask: (id: string) => void;
+  onDeleteTask: (id: string) => void;
 }
 
 const TaskTemplate: React.FC<TaskTemplateProps> = ({
@@ -18,13 +19,18 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({
   onAddTask,
   onNewTaskChange,
   onToggleTask,
+  onDeleteTask,
 }) => (
   <div className="p-4">
     <div className="flex space-x-2 mb-4">
       <Input value={newTask} onChange={onNewTaskChange} />
       <Button onClick={onAddTask}>Add Task</Button>
     </div>
-    <TaskList tasks={tasks} onToggleTask={onToggleTask} />
+    <TaskList
+      tasks={tasks}
+      onToggleTask={onToggleTask}
+      onDeleteTask={onDeleteTask}
+    />
   </div>
 );
 
