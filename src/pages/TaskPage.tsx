@@ -26,6 +26,12 @@ const TaskPage: React.FC = () => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const editTask = (id: string, newName: string) => {
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, name: newName } : task))
+    );
+  };
+
   return (
     <TaskTemplate
       tasks={tasks}
@@ -34,6 +40,7 @@ const TaskPage: React.FC = () => {
       onNewTaskChange={(e) => setNewTask(e.target.value)}
       onToggleTask={toggleTask}
       onDeleteTask={deleteTask}
+      onEditTask={editTask}
     />
   );
 };
