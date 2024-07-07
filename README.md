@@ -1,30 +1,60 @@
-# React + TypeScript + Vite
+# To-Do List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies Used
 
-Currently, two official plugins are available:
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+- Jest
+- React Testing Library
+- React Icons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Add tasks
+- Edit task names
+- Mark tasks as completed
+- Delete tasks
+- Save tasks to Local Storage
+- Confirmation modal for deleting tasks
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Development Methodology: Atomic Design
 
-- Configure the top-level `parserOptions` property like this:
+Atomic Design is a methodology for creating more consistent and manageable design systems. It is divided into five stages: atoms, molecules, organisms, templates, and pages. Here is how Atomic Design was applied in this project:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Atoms
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Atoms are the most basic building blocks of the interface, such as buttons, inputs, and checkboxes. In the To-Do List project, the following atoms were created:
+
+- `Button`: a reusable button component.
+- `Input`: a text input field component.
+- `Checkbox`: a checkbox component.
+- `Header`: a header component for the list title.
+
+### Molecules
+
+Molecules are simple combinations of atoms working together as a unit. In the To-Do List project, the following molecules were created:
+
+- `TaskItem`: a task item that combines atoms like `Checkbox`, `Button`, and `Input`.
+- `Modal`: a confirmation modal for task deletion.
+
+### Organisms
+
+Organisms are relatively complex components composed of groups of molecules and/or atoms and/or other organisms. In the To-Do List project, the following organism was created:
+
+- `TaskList`: a task list that groups multiple `TaskItem` components.
+
+### Templates
+
+Templates consist of groups of organisms assembled together to form page layouts. Templates focus on the structure and placement of information.
+
+- `TaskTemplate`: a template that organizes the layout of the application, including the task list and the input field to add new tasks.
+
+### Pages
+
+Pages are specific instances of templates. They represent the final interface that users will see.
+
+- `TaskPage`: the main page of the To-Do List application, which uses the `TaskTemplate` to organize all components.
+
+By following the Atomic Design methodology, we were able to create a modular and scalable application where each component has a clear responsibility and can be easily maintained and tested.
