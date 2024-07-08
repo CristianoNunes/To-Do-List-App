@@ -34,7 +34,7 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({
         onChange={onNewTaskChange}
         placeholder="Enter your next task here."
       />
-      <Button onClick={onAddTask}>
+      <Button onClick={onAddTask} data-testid="add-button">
         <MdAdd />
       </Button>
     </div>

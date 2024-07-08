@@ -25,8 +25,8 @@ test("renders TaskTemplate with tasks and input field", () => {
 });
 
 test("calls onAddTask when Add Task button is clicked", () => {
-  const { getByText } = render(<TaskTemplate {...defaultProps} />);
-  fireEvent.click(getByText("Add Task"));
+  const { getByTestId } = render(<TaskTemplate {...defaultProps} />);
+  fireEvent.click(getByTestId("add-button"));
   expect(defaultProps.onAddTask).toHaveBeenCalledTimes(1);
 });
 
