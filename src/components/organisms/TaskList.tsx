@@ -15,14 +15,15 @@ const TaskList: React.FC<TaskListProps> = ({
   onDeleteTask,
   onEditTask,
 }) => (
-  <div className="min-h-screen space-y-3">
+  <div className="min-h-screen ">
     {tasks.map((task) => (
       <TaskItem
         key={task.id}
+        id={task.id}
         name={task.name}
         completed={task.completed}
         onToggle={() => onToggleTask(task.id)}
-        onDelete={() => onDeleteTask(task.id)}
+        onDelete={onDeleteTask}
         onEdit={(newName: string) => onEditTask(task.id, newName)}
       />
     ))}

@@ -1,17 +1,18 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import TaskItem from "../TaskItem";
 
 const defaultProps = {
-  name: "Task 1",
+  id: "1",
+  name: "Test Task",
   completed: false,
   onToggle: jest.fn(),
   onDelete: jest.fn(),
   onEdit: jest.fn(),
 };
 
-test("renders task item with name", () => {
+test("renders TaskItem", () => {
   const { getByText } = render(<TaskItem {...defaultProps} />);
-  expect(getByText("Task 1")).toBeInTheDocument();
+  expect(getByText("Test Task")).toBeInTheDocument();
 });
 
 test("calls onToggle when checkbox is clicked", () => {
@@ -20,11 +21,11 @@ test("calls onToggle when checkbox is clicked", () => {
   expect(defaultProps.onToggle).toHaveBeenCalledTimes(1);
 });
 
-test("calls onDelete when delete button is clicked", () => {
+test("calls onDelete when delete button is clicked", async () => {
   const { getByTestId, getByText } = render(<TaskItem {...defaultProps} />);
   fireEvent.click(getByTestId("delete-button"));
   fireEvent.click(getByText("Confirm"));
-  expect(defaultProps.onDelete).toHaveBeenCalledTimes(1);
+  await waitFor(() => expect(defaultProps.onDelete).toHaveBeenCalledTimes(1));
 });
 
 test("calls onEdit when edit button is clicked", () => {
