@@ -27,7 +27,11 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({
   <div className="p-4">
     <Header text="TO-DO LIST" />
     <div className="flex space-x-2 mb-4">
-      <Input value={newTask} onChange={onNewTaskChange} />
+      <Input
+        value={newTask}
+        onChange={onNewTaskChange}
+        placeholder="Enter your next task here."
+      />
       <Button onClick={onAddTask}>Add Task</Button>
     </div>
     <TaskList
