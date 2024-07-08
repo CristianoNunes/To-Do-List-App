@@ -5,10 +5,12 @@
 - React
 - TypeScript
 - Tailwind CSS
+- Framer Motion
 - Vite
 - Jest
 - React Testing Library
 - React Icons
+- Eslint
 
 ## Features
 
