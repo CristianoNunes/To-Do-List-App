@@ -1,4 +1,6 @@
 import React from "react";
+import { MdAdd } from "react-icons/md";
+
 import Input from "../components/atoms/Input";
 import Button from "../components/atoms/Button";
 import TaskList from "../components/organisms/TaskList";
@@ -24,15 +26,17 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({
   onDeleteTask,
   onEditTask,
 }) => (
-  <div className="p-4">
+  <div className="md:max-w-[430px] md:min-w-[430px] lg:max-w-[430px] lg:min-w-[430px]">
     <Header text="TO-DO LIST" />
-    <div className="flex space-x-2 mb-4">
+    <div className="flex flex-nowrap space-x-2 mb-4 max-h-10">
       <Input
         value={newTask}
         onChange={onNewTaskChange}
         placeholder="Enter your next task here."
       />
-      <Button onClick={onAddTask}>Add Task</Button>
+      <Button onClick={onAddTask}>
+        <MdAdd />
+      </Button>
     </div>
     <TaskList
       tasks={tasks}

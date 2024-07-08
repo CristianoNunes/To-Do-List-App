@@ -15,7 +15,7 @@ const TaskList: React.FC<TaskListProps> = ({
   onDeleteTask,
   onEditTask,
 }) => (
-  <div>
+  <div className="min-h-screen space-y-3">
     {tasks.map((task) => (
       <TaskItem
         key={task.id}

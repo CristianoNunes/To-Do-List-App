@@ -49,26 +49,42 @@ const TaskItem: React.FC<TaskItemProps> = ({
 
   return (
     <>
-      <div className="flex items-center space-x-3">
-        <Checkbox checked={completed} onChange={onToggle} />
-        {isEditing ? (
-          <Input value={editValue} onChange={handleEditChange} />
-        ) : (
-          <span className={completed ? "line-through" : ""}>{name}</span>
-        )}
-        <Button
-          onClick={isEditing ? handleEditSubmit : () => setIsEditing(true)}
-          data-testid="edit-button"
-        >
-          {isEditing ? <MdOutlineSave /> : <MdOutlineModeEdit />}
-        </Button>
-        <Button
-          onClick={handleDelete}
-          typeButton="danger"
-          data-testid="delete-button"
-        >
-          <MdOutlineDeleteForever />
-        </Button>
+      <div className="flex items-center justify-between w-full space-x-2">
+        <div className="flex items-center bg-white space-x-2 w-full min-h-8 pl-2 rounded truncate">
+          <Checkbox checked={completed} onChange={onToggle} />
+          {isEditing ? (
+            <Input
+              value={editValue}
+              onChange={handleEditChange}
+              className="max-h-8 flex-grow"
+            />
+          ) : (
+            <span
+              className={`flex-grow pr-2 truncate ${
+                completed ? "line-through" : ""
+              }`}
+              title={name}
+            >
+              {name}
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center space-x-1 min-h-8">
+          <Button
+            onClick={isEditing ? handleEditSubmit : () => setIsEditing(true)}
+            data-testid="edit-button"
+          >
+            {isEditing ? <MdOutlineSave /> : <MdOutlineModeEdit />}
+          </Button>
+          <Button
+            onClick={handleDelete}
+            typeButton="danger"
+            data-testid="delete-button"
+          >
+            <MdOutlineDeleteForever />
+          </Button>
+        </div>
       </div>
       {isModalOpen && (
         <Modal

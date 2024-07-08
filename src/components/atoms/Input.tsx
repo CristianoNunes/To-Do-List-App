@@ -10,7 +10,7 @@ const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => (
     type="text"
     value={value}
     onChange={onChange}
-    className="border rounded px-2 py-1"
+    className="w-full rounded px-2 py-1 focus:outline-none focus:ring-0"
     {...props}
   />
 );
